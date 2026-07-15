@@ -9,8 +9,12 @@ export default function RegisterPage() {
         <span className="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">
           TaskFlow
         </span>
-        <h1 className="mt-2 font-display text-3xl font-semibold text-ink">Create your account</h1>
-        <p className="mt-1 text-sm text-ink-soft">Start clearing your list today.</p>
+        <h1 className="mt-2 font-display text-3xl font-semibold text-ink">
+          Create your account
+        </h1>
+        <p className="mt-1 text-sm text-ink-soft">
+          Start clearing your list today.
+        </p>
 
         <div className="mt-6">
           <RegisterForm />

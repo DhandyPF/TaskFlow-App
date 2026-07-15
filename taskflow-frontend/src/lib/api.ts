@@ -18,9 +18,12 @@ class ApiError extends Error {
 
 async function request<T>(
   path: string,
-  options: RequestInit = {}
+  options: RequestInit = {},
 ): Promise<ApiEnvelope<T>> {
-  const token = typeof window !== "undefined" ? localStorage.getItem("taskflow_token") : null;
+  const token =
+    typeof window !== "undefined"
+      ? localStorage.getItem("taskflow_token")
+      : null;
 
   const res = await fetch(`${API_BASE_URL}${path}`, {
     ...options,
@@ -47,9 +50,15 @@ async function request<T>(
 export const api = {
   get: <T>(path: string) => request<T>(path, { method: "GET" }),
   post: <T>(path: string, data?: unknown) =>
-    request<T>(path, { method: "POST", body: data ? JSON.stringify(data) : undefined }),
+    request<T>(path, {
+      method: "POST",
+      body: data ? JSON.stringify(data) : undefined,
+    }),
   put: <T>(path: string, data?: unknown) =>
-    request<T>(path, { method: "PUT", body: data ? JSON.stringify(data) : undefined }),
+    request<T>(path, {
+      method: "PUT",
+      body: data ? JSON.stringify(data) : undefined,
+    }),
   delete: <T>(path: string) => request<T>(path, { method: "DELETE" }),
 };
 

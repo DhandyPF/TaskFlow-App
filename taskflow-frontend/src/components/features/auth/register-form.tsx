@@ -25,7 +25,11 @@ export function RegisterForm() {
       await authService.login({ email, password });
       router.push("/dashboard");
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Could not create your account. Try again.");
+      setError(
+        err instanceof ApiError
+          ? err.message
+          : "Could not create your account. Try again.",
+      );
     } finally {
       setLoading(false);
     }

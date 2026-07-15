@@ -27,9 +27,7 @@ export function TodoList() {
     setError(null);
     try {
       const params =
-        filter === "all"
-          ? undefined
-          : { is_completed: filter === "completed" };
+        filter === "all" ? undefined : { is_completed: filter === "completed" };
       const res = await todoService.list(params);
       setTodos(res.data || []);
     } catch {
@@ -67,7 +65,7 @@ export function TodoList() {
 
   async function handleToggle(id: string, completed: boolean) {
     setTodos((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, is_completed: completed } : t))
+      prev.map((t) => (t.id === id ? { ...t, is_completed: completed } : t)),
     );
     try {
       await todoService.update(id, { is_completed: completed });
@@ -87,7 +85,7 @@ export function TodoList() {
 
   const completedCount = useMemo(
     () => todos.filter((t) => t.is_completed).length,
-    [todos]
+    [todos],
   );
   const total = todos.length;
   const momentum = total === 0 ? 0 : Math.round((completedCount / total) * 100);
@@ -121,14 +119,19 @@ export function TodoList() {
               key={f}
               onClick={() => setFilter(f)}
               className={`rounded px-3 py-1 text-xs font-mono uppercase tracking-wide transition-colors ${
-                filter === f ? "bg-ink text-paper" : "text-ink-soft hover:bg-line/50"
+                filter === f
+                  ? "bg-ink text-paper"
+                  : "text-ink-soft hover:bg-line/50"
               }`}
             >
               {f}
             </button>
           ))}
         </div>
-        <Button onClick={() => setFormOpen((v) => !v)} variant={formOpen ? "ghost" : "primary"}>
+        <Button
+          onClick={() => setFormOpen((v) => !v)}
+          variant={formOpen ? "ghost" : "primary"}
+        >
           {formOpen ? "Cancel" : "+ New task"}
         </Button>
       </div>
@@ -184,14 +187,21 @@ export function TodoList() {
 
       <div className="rounded-lg border border-line bg-white px-5">
         {loading ? (
-          <p className="py-8 text-center font-mono text-sm text-ink-soft">Loading tasks...</p>
+          <p className="py-8 text-center font-mono text-sm text-ink-soft">
+            Loading tasks...
+          </p>
         ) : todos.length === 0 ? (
           <p className="py-8 text-center font-mono text-sm text-ink-soft">
             No tasks here. Add one to get moving.
           </p>
         ) : (
           todos.map((todo) => (
-            <TodoItem key={todo.id} todo={todo} onToggle={handleToggle} onDelete={handleDelete} />
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              onToggle={handleToggle}
+              onDelete={handleDelete}
+            />
           ))
         )}
       </div>

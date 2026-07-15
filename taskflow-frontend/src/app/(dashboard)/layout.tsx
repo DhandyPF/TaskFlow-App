@@ -6,7 +6,11 @@ import { useRouter } from "next/navigation";
 import { authService } from "@/services/auth.service";
 import { Button } from "@/components/ui/button";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const router = useRouter();
   const [checked, setChecked] = useState(false);
 
@@ -35,7 +39,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="min-h-screen">
       <header className="border-b border-line bg-white">
         <div className="mx-auto flex max-w-2xl items-center justify-between px-6 py-4">
-          <span className="font-display text-lg font-semibold text-ink">TaskFlow</span>
+          <span className="font-display text-lg font-semibold text-ink">
+            TaskFlow
+          </span>
           <Button variant="ghost" onClick={handleLogout}>
             Sign out
           </Button>

@@ -23,7 +23,9 @@ export function LoginForm() {
       await authService.login({ email, password });
       router.push("/dashboard");
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Could not sign in. Try again.");
+      setError(
+        err instanceof ApiError ? err.message : "Could not sign in. Try again.",
+      );
     } finally {
       setLoading(false);
     }

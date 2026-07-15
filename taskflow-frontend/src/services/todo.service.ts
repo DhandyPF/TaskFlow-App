@@ -14,7 +14,8 @@ export const todoService = {
     return api.get<Todo[]>(`/api/v1/todos${qs ? `?${qs}` : ""}`);
   },
 
-  create: (payload: CreateTodoPayload) => api.post<Todo>("/api/v1/todos", payload),
+  create: (payload: CreateTodoPayload) =>
+    api.post<Todo>("/api/v1/todos", payload),
 
   update: (id: string, payload: UpdateTodoPayload) =>
     api.put<Todo>(`/api/v1/todos/${id}`, payload),

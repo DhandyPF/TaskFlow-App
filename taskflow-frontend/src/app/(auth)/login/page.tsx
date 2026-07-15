@@ -9,7 +9,9 @@ export default function LoginPage() {
         <span className="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">
           TaskFlow
         </span>
-        <h1 className="mt-2 font-display text-3xl font-semibold text-ink">Welcome back</h1>
+        <h1 className="mt-2 font-display text-3xl font-semibold text-ink">
+          Welcome back
+        </h1>
         <p className="mt-1 text-sm text-ink-soft">Sign in to see your tasks.</p>
 
         <div className="mt-6">

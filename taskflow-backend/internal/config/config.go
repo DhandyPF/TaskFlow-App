@@ -22,7 +22,7 @@ func Load() *Config {
 
 	return &Config{
 		Port:        getEnv("PORT", "8080"),
-		DatabaseDSN: getEnv("DATABASE_DSN", "./taskflow.db"),
+		DatabaseDSN: getEnv("DATABASE_DSN", "./database-name.db"),
 		JWTSecret:   getEnv("JWT_SECRET", "change-this-secret-in-production"),
 	}
 }

@@ -33,6 +33,7 @@ Konfigurasi backend bisa diatur lewat file `.env` (contoh ada di `.env.example`)
 - `PORT`, port server, default 8080
 - `DATABASE_DSN`, lokasi file database SQLite, dibuat otomatis kalau belum ada
 - `JWT_SECRET`, kunci rahasia untuk token login, wajib diganti kalau aplikasi mau dipakai serius di luar komputer sendiri
+- `ALLOWED_ORIGINS`, daftar domain frontend yang diizinkan mengakses API, dipisah koma. Boleh dikosongkan untuk development lokal.
 
 ### 2. Jalankan frontend
 
@@ -74,8 +75,6 @@ Catatan, kedua server (backend port 8080 dan frontend port 3000) harus tetap jal
 Setiap endpoint todo membaca header `Authorization: Bearer <token>` dan hanya mengembalikan data milik user yang login. Semua query database difilter dengan `user_id` untuk mencegah user mengakses data user lain.
 
 ## Catatan implementasi
-
-- Database memakai SQLite, file lokal untuk kemudahan setup. Skema dan query sudah kompatibel pola dengan PostgreSQL/MySQL, kalau nanti mau migrasi tinggal ganti driver dan DSN di `internal/repository/db.go`.
 - Password di-hash dengan bcrypt, cost factor 10.
 - Token JWT berlaku 24 jam sejak login.
 - Proteksi rute ada di dua sisi, backend (`internal/delivery/http/middleware/auth_middleware.go`) dan frontend (`src/app/(dashboard)/layout.tsx`, redirect ke halaman login kalau tidak ada token tersimpan).

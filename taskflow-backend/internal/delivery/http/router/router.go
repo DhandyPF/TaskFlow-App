@@ -8,7 +8,7 @@ import (
 )
 
 // New builds the full HTTP router for the TaskFlow API.
-func New(authHandler *handler.AuthHandler, todoHandler *handler.TodoHandler, jwtSecret string) http.Handler {
+func New(authHandler *handler.AuthHandler, todoHandler *handler.TodoHandler, jwtSecret string, allowedOrigins []string) http.Handler {
 	mux := http.NewServeMux()
 
 	// Health check
@@ -32,5 +32,5 @@ func New(authHandler *handler.AuthHandler, todoHandler *handler.TodoHandler, jwt
 	mux.Handle("/api/v1/todos", authMiddleware(protected))
 	mux.Handle("/api/v1/todos/", authMiddleware(protected))
 
-	return middleware.CORS(middleware.Logger(mux))
+	return middleware.CORS(allowedOrigins)(middleware.Logger(mux))
 }

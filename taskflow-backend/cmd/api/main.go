@@ -29,7 +29,7 @@ func main() {
 	authHandler := handler.NewAuthHandler(authUsecase)
 	todoHandler := handler.NewTodoHandler(todoUsecase)
 
-	r := router.New(authHandler, todoHandler, cfg.JWTSecret)
+	r := router.New(authHandler, todoHandler, cfg.JWTSecret, cfg.AllowedOrigins)
 
 	log.Printf("TaskFlow API listening on :%s", cfg.Port)
 	if err := http.ListenAndServe(":"+cfg.Port, r); err != nil {

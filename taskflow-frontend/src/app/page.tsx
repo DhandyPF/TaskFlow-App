@@ -41,6 +41,7 @@ export default function Home() {
           Create account
         </Link>
       </div>
+      <Analytics />
     </main>
   );
 }

@@ -27,6 +27,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body bg-paper text-ink">{children}</body>
+      <Analytics />
     </html>
   );
 }

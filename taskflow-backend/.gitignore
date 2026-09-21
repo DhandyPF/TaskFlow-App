@@ -2,3 +2,5 @@ taskflow.db
 taskflow-api
 *.log
 .env
+.env.example
+.gitignore

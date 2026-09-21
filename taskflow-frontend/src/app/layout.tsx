@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "TaskFlow",
@@ -27,7 +26,6 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body bg-paper text-ink">{children}</body>
-      <Analytics />
     </html>
   );
 }

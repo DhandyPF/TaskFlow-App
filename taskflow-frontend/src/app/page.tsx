@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import { authService } from "@/services/auth.service";
-import { Analytics } from '@vercel/analytics/react';
 
 export default function Home() {
   const router = useRouter();
@@ -42,7 +41,6 @@ export default function Home() {
           Create account
         </Link>
       </div>
-      <Analytics />
     </main>
   );
 }
